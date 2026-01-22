@@ -48,8 +48,10 @@ ALLOWED_ADMIN_USERNAMES = {"vladmarchenko9"}  # без @
 GROUP_MODE = os.getenv("GROUP_MODE", "mention").strip().lower()
 
 # Файлы хранения
-SESSIONS_FILE = "sessions.json"
-ADMINS_FILE = "admins.json"
+DATA_DIR = os.getenv("DATA_DIR", ".").strip() or "."
+SESSIONS_FILE = os.path.join(DATA_DIR, "sessions.json")
+ADMINS_FILE = os.path.join(DATA_DIR, "admins.json")
+PENDING_LEADS_FILE = os.path.join(DATA_DIR, "pending_leads.json")
 
 # Ограничение истории (чтобы не раздувать контекст и стоимость)
 MAX_TURNS = int(os.getenv("MAX_TURNS", "12"))  # сообщений (user+assistant суммарно)
