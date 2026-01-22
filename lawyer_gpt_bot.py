@@ -271,7 +271,7 @@ async def send_long(context: ContextTypes.DEFAULT_TYPE, chat_id: int, text: str)
 async def send_to_admins(context: ContextTypes.DEFAULT_TYPE, text: str) -> None:
     admin_ids: List[int] = ADMINS.get("admin_ids", [])
     if not admin_ids:
-        save_json("pending_leads.json", {"saved_at": datetime.now().isoformat(timespec="seconds"), "lead": text})
+        save_json(PENDING_LEADS_FILE, {"saved_at": datetime.now().isoformat(timespec="seconds"), "lead": text})
         return
     for aid in admin_ids:
         try:
